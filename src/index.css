@@ -1,0 +1,89 @@
+/**
+  * Figure out how to have create-react-app to build boostrap everytime so we
+  *  modify variables.scss instead of having to overwrite iwth this
+  */
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+
+/**
+  *  Dimensions
+  *  w-100 x4 =>           400px
+  *  border: 3   x4        436px
+  *
+  * 486 - (24 *2 = 438px   484px
+  */
+
+* {
+  font-family: 'PT Sans', sans-serif;
+  color: #b2b2b2; /* text-sedondary */
+}
+
+a {
+  color: #e6e6e6 !important; /* .text-secon   */
+}
+
+.clr-4 {
+  color: #25b9c5 !important; /* text-fourthary */
+}
+
+/* fixme: * { color: ...} is overwritting this */
+a:hover {
+  color: #25b9c5 !important; /* text-fourthary */
+}
+
+.icon:hover * {
+  color: #25b9c5 !important;
+}
+
+.icon.active  * {
+  color: #25b9c5 !important;
+  /*FIXME: does not overflow <svg> transform: scale(1.08);*/
+}
+
+.text-primary {
+  color: black !important;
+}
+
+.bg-primary {
+  background-color: black !important;
+}
+
+.text-secondary {
+  color: #b2b2b2 !important;
+}
+
+.bg-secondary {
+  background-color: #e6e6e6 !important;
+}
+
+.text-tertiary {
+  color: white;
+}
+
+.bg-tertiary {
+  background-color: white;
+}
+
+
+input[type="text"] {
+  min-width: 300px !important;
+  min-height: 40px !important;
+  text-transform: uppercase !important;
+}
+
+.giph {
+  box-sizing: content-box;
+  border: 3px solid transparent;
+}
+
+/* QUESTION: should we do .active .giph instead (ancestor) */
+.active.giph {
+  box-sizing: content-box;
+  border: 3px solid #C7C7C7; /* secondary color but darker so... quintery?? */
+  border-radius: 3px;
+}
+
+/* TEMP */
+.active.giph .giph {
+  box-sizing: content-box;
+  border-style: none;
+}

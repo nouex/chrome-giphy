@@ -1,0 +1,43 @@
+{
+  "name": "chrome-giphy-3",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^4.0.0-beta",
+    "express": "^4.16.1",
+    "http-proxy-middleware": "^0.17.4",
+    "jquery": "^3.2.1",
+    "morgan": "^1.9.0",
+    "prop-types": "^15.6.0",
+    "react": "^15.6.2",
+    "react-bootstrap": "^0.31.3",
+    "react-copy-to-clipboard": "^5.0.1",
+    "react-dom": "^15.6.2",
+    "react-icons": "^2.2.5",
+    "react-redux": "^5.0.6",
+    "react-scripts": "1.0.14",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
+    "underscore": "^1.8.3",
+    "xhr": "^2.4.0"
+  },
+  "devDependencies": {
+    "enzyme": "^2.8.2",
+    "react-addons-test-utils": "^15.5.1",
+    "react-test-renderer": "^15.5.4"
+  },
+  "proxy": {
+    "/v1": {
+      "target": "http://localhost:8080"
+    }
+  }
+}
