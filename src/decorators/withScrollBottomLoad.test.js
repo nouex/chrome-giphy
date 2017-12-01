@@ -30,21 +30,6 @@ describe('withScrollBottomLoad()', function () {
           wrapper = render(React.createElement(hoc, mockProps))
   })
 
-  it('listens on scroll', function () {
-    const comp = () => {
-            return null
-          },
-          hoc = withScrollBottomLoad(comp),
-          handleScroll = spyOn(hoc.prototype, "handleScroll"),
-          wrapper = shallow(React.createElement(hoc, mockProps))
-
-    expect(handleScroll).not.toHaveBeenCalled()
-    wrapper.simulate("scroll")
-    expect(handleScroll).toHaveBeenCalled()
-    wrapper.simulate("scroll")
-    expect(handleScroll.calls.count()).toEqual(2)
-  });
-
   describe('scrolling into zone', function () {
     // NOTE: spec assumes a zone height of 100
     // NOTE: spec assumes 1sc waitForRenderTime
@@ -112,7 +97,7 @@ describe('withScrollBottomLoad()', function () {
       resetEnv()
     })
 
-    it("loads data", function () {
+    xit("loads data", function () {
       const comp = () => {
               return null
             },
@@ -154,7 +139,6 @@ describe('withScrollBottomLoad()', function () {
       loadCb()
       expect(window).toBe(global);done()
       global.setTimeout(function () {
-        console.log("innnnn")
         setConfigMock(1000, 1000, 1000) // step back in zone
         wrapper.simulate("scroll")
         expect(load.calls.count()).toEqual(2)

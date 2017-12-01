@@ -28,7 +28,6 @@ class IconSelector extends React.Component {
                           this.setState({
                             value: name
                           })
-                          console.log("value 2222", name)
                           this.props.onChange(name)
                         }
 

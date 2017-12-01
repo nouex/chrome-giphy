@@ -15,12 +15,12 @@ function load(shouldReplace, activeIcon, stickerMode, queries, cb) {
 
     cb = cb || (() => void(0))
 
+    updatePagination(activeIcon, shouldReplace, pagination)
+
     // pagination
     activeIcon in pagination ?
       queries = applyPagination(queries, pagination[activeIcon]) :
       void(0)
-
-    updatePagination(activeIcon, shouldReplace, pagination)
 
     // format search part of uri
     search = formatQueries(queries)

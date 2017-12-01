@@ -4,7 +4,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import Spinner from "../components/Spinner"
 
-function withLoad(Wrapped) {
+function withSpinner(Wrapped) {
   class SpinnerWrapper extends React.Component {
     constructor(props) {
       super(props);
@@ -66,4 +66,4 @@ function withLoad(Wrapped) {
   return SpinnerWrapper
 }
 
-export default withLoad
+export default withSpinner

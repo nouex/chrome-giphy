@@ -7,6 +7,7 @@ import Currents from "../../containers/Currents"
 import withPrefetch from "../../decorators/withPrefetch.js"
 import withQuery from "../../decorators/withQuery"
 import withQueries from "../../decorators/withQueries"
+import withLoad from "../../decorators/withLoad"
 import PropTypes from "prop-types"
 import { compose } from "underscore"
 
@@ -29,6 +30,6 @@ Random.propTypes = {
   stickerMode: PropTypes.bool.isRequired
 }
 
-Random = compose(withQueries, withQuery, withPrefetch)(Random)
+Random = compose(withLoad, withQueries, withQuery, withPrefetch)(Random)
 
 export default Random

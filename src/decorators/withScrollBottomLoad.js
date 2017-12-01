@@ -34,14 +34,15 @@ function withScrollBottomLoad(Wrapped) {
     }
 
     load() {
-      let { activeIcon, stickerMode, load, query, pagination } = this.props
+      let { activeIcon, stickerMode, query, load, pagination } = this.props
+      // query = query.q
+
       load( false, activeIcon, stickerMode, query,
             this.onLoadReqComplete.bind(this), this.pagination++ )
     }
 
     // 4.
     onLoadReqComplete() {
-      console.log("*** 4 onLoadReqComplete()")
       // 5. how do we know the new data has been rendered ?
       //    for now we wait just about enough for react to render it
       window.setTimeout(() => {
@@ -50,11 +51,8 @@ function withScrollBottomLoad(Wrapped) {
     }
 
     handleScroll() {
-      console.log("*** 1 handleScroll()")
       if($(window).scrollTop() + $(window).height() > $(document).height() - zoneHeight) { // previously:  ($.fn.scrollTop.call(window) + $.fn.height.call(window) > $.fn.height.call(document) - zoneHeight)
-        console.log("*** 2")
         if (this.scrollEvOn) { // 2.
-          console.log("*** 3")
           this.scrollEvOn = false
           this.load() // 3.
         }
@@ -63,7 +61,6 @@ function withScrollBottomLoad(Wrapped) {
 
     render() {
       const passedProps = this.props
-
       return (
         <div>
           <Wrapped {...passedProps}/>
@@ -76,7 +73,7 @@ function withScrollBottomLoad(Wrapped) {
     activeIcon: PropTypes.string.isRequired,
     stickerMode: PropTypes.bool.isRequired,
     load: PropTypes.func.isRequired,
-    query: PropTypes.string//,
+    query: PropTypes.object//,
     // pagination: PropTypes.number
   }
 

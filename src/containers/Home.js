@@ -1,15 +1,11 @@
 'use strict';
 
-import React from 'react';
-import Home from "../components/Home"
+import React from "react"
 import { connect } from "react-redux"
 import actions from "../actions"
-let { load } = actions
+import Home from "../components/Home"
+const { setActiveIcon } = actions
 
-const _Home = connect((state, own) => {
-  return {
-    currents: state.currents
-  }
-}, { load })(Home)
+const _Home = connect(undefined, {setActiveIcon})(Home);
 
 export default _Home

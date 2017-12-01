@@ -1,0 +1,34 @@
+One commit, it works up to that point.
+
+Then we decided to clean things up. That means taking care of state. Isolating
+components.  Making things more declarative.  Code robustness. So we began with
+a few things.
+
+Everything not staged was in response to one of the following:
+1. <Home /> no longer requires load() or state.currents
+  * state.currents was used to determine needsPrefetch which was then passed
+    from <Home /> downward, instead we connec() needsPrefetch() so it has direct
+    access to the store and it can determing needsPrefetch() on it's own leading
+    to more isolation
+  * components that require load() use withLoad().  See #2. for why.  Also why
+    not just connect to store directly, we could but then we'd have to do it for
+    every component in ActiveIconViews/ so to keep thing non-repetitive we use
+    a hoc
+2. following the principle of "if several components make use of state, instead
+    of bringing it up and up and up as we find out an upper component needs it just
+    keep it in store"
+    * activeIcon is kept in store now so anything that equires it should connect
+     to store. this goes for dumb (presentation) components and decorators (aka hoc)
+
+As of now, there is an ugly "Invariant" error.  I can't find the root cause of it.
+I now it has to do with withLoad() b/c if we remove it the error is gone.
+
+What to do next:
+
+1. write unit tests for withLoad(), fix it
+2. make sure the changes in 1. and 2. work
+3. continue cleanup process
+4. implement settings as described at the bottom of TODO.md
+5. knock of TODO.md
+6. https://github.com/yeoman/generator-chrome-extension to make the chrome extension
+7. request a giphy production key, deploy to heroku (https://github.com/zeit/next.js#static-html-export), deploy to chrome store

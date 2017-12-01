@@ -1,3 +1,5 @@
+* use a Set data struct for recents, it's more natural
+
 * when <Home /> passed stickeMOde to an activeIconView we don't wanna reload but
 have the flag be set to the new value on the next intended load/reload.  How
 do we do that?

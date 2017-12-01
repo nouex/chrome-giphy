@@ -8,6 +8,7 @@ import withScrollBottomLoad from "../../decorators/withScrollBottomLoad"
 import withQuery from "../../decorators/withQuery"
 import withSpinner from "../../decorators/withSpinner"
 import withQueries from "../../decorators/withQueries"
+import withLoad from "../../decorators/withLoad"
 import PropTypes from "prop-types"
 import {compose} from "underscore"
 
@@ -49,4 +50,4 @@ Search.propTypes = {
   query: PropTypes.object.isRequired
 }
 
-export default compose(withQueries, withSpinner, withQuery, withScrollBottomLoad)(Search)
+export default compose(withLoad, withQueries, withSpinner, withQuery, withScrollBottomLoad)(Search)

@@ -28,6 +28,7 @@ class Home extends React.Component {
   }
 
   handleIconChange(val) {
+    this.props.setActiveIcon(val)
     this.setState({
       activeIcon: val
     })
@@ -47,9 +48,7 @@ class Home extends React.Component {
 
     const passedProps = {
       activeIcon,
-      stickerMode,
-      load: this.props.load,
-      needsPrefetch: this.props.currents[activeIcon].length === 0
+      stickerMode
     }
 
     return (
@@ -59,15 +58,14 @@ class Home extends React.Component {
           <StickerModeToggle mode={stickerMode}
                              onClick={this.onStickerModeToggleClick}/>
         </div>
-        { React.createElement(activeIconViews[activeIcon], passedProps)}
+        { React.createElement(activeIconViews[activeIcon], {stickerMode, activeIcon}) }
       </div>
     )
   }
 }
 
 Home.propTypes = {
-  load: PropTypes.func.isRequired,
-  currents: PropTypes.object.isRequired
+  setActiveIcon: PropTypes.func.isRequired
 }
 
 export default Home

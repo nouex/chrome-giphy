@@ -101,7 +101,7 @@ class Grid extends React.Component {
     this.handleGenericArrow("right")
   }
 
-  componentWillUnMount() {
+  componentWillUnmount() {
     this.unregisterKeyEvents()
   }
 
@@ -136,7 +136,7 @@ class Grid extends React.Component {
       img = imgObj.images.fixed_width_small// 100px w
       id = imgObj.id
       ret = (
-        <CopyToClipboard key={id} text={img.url} onCopy={(t, res) => {console.log("copied ?", res)}}>
+        <CopyToClipboard key={id} text={img.url} onCopy={(t, res) => {/*...*/}}>
           <img width={img.width} height={img.height} src={img.url}
                className="giph" />
         </CopyToClipboard>
@@ -149,7 +149,7 @@ class Grid extends React.Component {
       if (ind === activeAt) {
         ret = <ActiveGridItem key={id} onClick={onActiveClick}>{ret}</ActiveGridItem>
       } else {
-        ret = <div onMouseOver={this.onHover.bind(void(0), ind)}>{ret}</div>
+        ret = <div key={id} onMouseOver={this.onHover.bind(void(0), ind)}>{ret}</div>
       }
 
       return ret

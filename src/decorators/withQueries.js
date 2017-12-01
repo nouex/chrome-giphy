@@ -53,9 +53,7 @@ function withQueries(Wrapped) {
 
     render() {
       const passedQueries = Object.assign({}, this.props, {load: this.proxyLoad})
-      return (
-          <Wrapped {...passedQueries}/>
-      )
+      return <Wrapped {...this.props} {...passedQueries} />
     }
   }
 
