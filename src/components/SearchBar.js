@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import Icon from "./Icon"
 import Reset from 'react-icons/lib/md/close';
 import PropTypes from "prop-types"
 

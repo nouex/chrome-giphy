@@ -38,7 +38,11 @@ class IconSelector extends React.Component {
                         className="d-inline">
                           <Icon icon={icon}
                                 textColor="text-primary"
-                                active={ value === name ? true : false }/>
+                                active={ value === name ? true : false }
+                                title={
+                                  name[0].toUpperCase().concat(name.slice(1))
+                                }
+                                />
                       </div>
                     )
                   })

@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import Icon from "./Icon"
 import SpinnerIcon from 'react-icons/lib/fa/spinner';
 
 class Spinner extends React.Component {

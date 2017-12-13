@@ -20,10 +20,12 @@ const NavBar = ({active, onChange}) => {
                 <Icon icon={OcticonHome}
                       active={active === "home"}
                       onClick={onChange.bind(null, "home")}
+                      title="Home"
                       />
                 <Icon icon={OcticonGear}
                       active={active === "settings"}
                       onClick={onChange.bind(null, "settings")}
+                      title="Settings"
                       />
             </NavItem>
           </Nav>
