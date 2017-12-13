@@ -38,7 +38,7 @@ function withScrollBottomLoad(Wrapped) {
       // query = query.q
 
       load( false, activeIcon, query,
-            this.onLoadReqComplete.bind(this), this.pagination++ )
+            this.onLoadReqComplete.bind(this))
     }
 
     // 4.
