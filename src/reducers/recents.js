@@ -3,29 +3,28 @@
 import c from "../constants"
 
 const initState = [],
-      stackSize = 8
+      sizeLimit = 8,
+      set = new Set()
 
-export default function(state = initState, action) {
+export default function(queue = initState, action) {
   switch (action.type) {
     case c.SELECT:
-      let imgObj, id1, shouldAdd, ret
-      imgObj = action.imgObj
-      id1 = imgObj.id
-      shouldAdd = true
-      shouldAdd = state.length ?
-                    !state.some(({ id }) => id1 === id) :
-                    shouldAdd
-      if (shouldAdd) {
-        ret = [].slice.call(state) // shallow copy
-        ret.unshift(imgObj) // stack push
-        ret.length = stackSize // stack size limit
+      let { imgObj } = action,
+          { id: imgId } = imgObj,
+          ret
+
+      if (!set.has(imgId)) {
+        set.add(imgId)
+        ret = [].slice.call(queue) // shallow copy
+        ret.unshift(imgObj) // queue push
+        ret.length = sizeLimit // queue size limit
       } else {
-        ret = state
+        ret = queue
       }
       return ret;
       break;
 
     default:
-      return state
+      return queue
   }
 }
