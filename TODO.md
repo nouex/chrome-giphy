@@ -1,16 +1,16 @@
-* use a Set data struct for recents, it's more natural
+* ~~use a Set data struct for recents, it's more natural~~
 
-* when <Home /> passed stickeMOde to an activeIconView we don't wanna reload but
+* ~~when <Home /> passed stickeMOde to an activeIconView we don't wanna reload but
 have the flag be set to the new value on the next intended load/reload.  How
-do we do that?
+do we do that?~~
 
-* extend from PureComponent in compnents that rely on props being passed e.g. <Home />
+* ~~extend from PureComponent in compnents that rely on props being passed e.g. <Home />~~
 
-* prop-types not running, at least in tests
+* ~~prop-types not running, at least in tests~~
 
 * deal with load() cb non-successful complesion
 
-* use something other than jquery for such a small task, really we're only using it cause of browser compat and abstraction
+* use something other than jquery for such a small task, really we're only using it cause of browser compat and abstraction, also underscore
 
 * shoun'd withqeury() only be called int the module that needs it??
 
@@ -18,9 +18,7 @@ do we do that?
 
 * use promise-based axios
 
-* mk a constant.js for action types
-
-* repalce jquery and underscore
+* ~~mk a constant.js for action types~~
 
 * get rid of withQuery() and go with the alternative (update:) also what would have been withHasPrefetched() solving the same issue as withQuery() but wasn't implemented b/c we decided to pass it through <Home />. Yeah, the cleaner approach for that should be similar to that of withQuery() and the solutions are:
   problem: hoc wraps a target comp. and the hoc needs state that belongs to that comp
@@ -38,11 +36,11 @@ this https://stackoverflow.com/a/40547470/3280654 and it might work.  If it
 seems viable wrap it in a react component so that we may then import it in
 Grid.js and use it declaratively
 
-* reload the current on sticker toggle
+* ~~reload the current on sticker toggle~~
 
-* not all icons should change color on hover only the clickable ones same goes for the cursor css prop
+* ~~not all icons should change color on hover only the clickable ones same goes for the cursor css prop~~
 
-* pass "title " to Icon and have icon pass down any props it don' recognize
+* ~~pass "title " to Icon and have icon pass down any props it don' recognize~~
 
 * reset icon in search bar
 
@@ -54,7 +52,7 @@ Grid.js and use it declaratively
 next
 ----
 1. make it pretty ✅
-2. cleanup
+2. cleanup ✅
 4. settings loading from disk with and chrome extension
 3. toods
 
