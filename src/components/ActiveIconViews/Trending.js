@@ -9,6 +9,7 @@ import withSpinner from "../../decorators/withSpinner"
 import withQuery from "../../decorators/withQuery"
 import withQueries from "../../decorators/withQueries"
 import withLoad from "../../decorators/withLoad"
+import withStickerMode from "../../decorators/withStickerMode"
 import { compose } from "underscore"
 import PropTypes from "prop-types"
 
@@ -21,6 +22,6 @@ let Trending = () => {
   )
 }
 
-Trending = compose(withLoad, withQueries, withSpinner, withQuery, withScrollBottomLoad, withPrefetch)(Trending)
+Trending = compose(withLoad, withQueries, withSpinner, withStickerMode, withQuery, withScrollBottomLoad, withPrefetch)(Trending)
 
 export default Trending

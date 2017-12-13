@@ -8,12 +8,13 @@ import withPrefetch from "../../decorators/withPrefetch.js"
 import withQuery from "../../decorators/withQuery"
 import withQueries from "../../decorators/withQueries"
 import withLoad from "../../decorators/withLoad"
+import withStickerMode from "../../decorators/withStickerMode"
 import PropTypes from "prop-types"
 import { compose } from "underscore"
 
-let Random = ({ load, stickerMode }) => {
+let Random = ({ load }) => {
   const handleRefresh = () => {
-    load(true, "random", stickerMode, {})
+    load(true, "random", {})
   }
 
   return (
@@ -26,10 +27,9 @@ let Random = ({ load, stickerMode }) => {
 }
 
 Random.propTypes = {
-  load: PropTypes.func.isRequired,
-  stickerMode: PropTypes.bool.isRequired
+  load: PropTypes.func.isRequired
 }
 
-Random = compose(withLoad, withQueries, withQuery, withPrefetch)(Random)
+Random = compose(withLoad, withQueries, withStickerMode, withQuery, withPrefetch)(Random)
 
 export default Random

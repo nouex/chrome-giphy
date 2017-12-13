@@ -12,27 +12,21 @@ class PrefetchWrapper extends React.Component {
   }
 
   componentWillMount() {
-    const  { activeIcon, stickerMode, load, query, needsPrefetch } = this.props
-    if (needsPrefetch) load(false, activeIcon, stickerMode, query)
+    const  { activeIcon, load, query, needsPrefetch } = this.props
+    if (needsPrefetch) load(false, activeIcon, query)
   }
 
   render() {
     const Wrapped = this.props.children
     const {
-    activeIcon, stickerMode, load, query} = this.props
-    const passedProps = {
-      activeIcon, stickerMode, load, query
-    }
+    activeIcon, load, query} = this.props
+    const passedProps = { load }
     return <Wrapped {...passedProps}/>
   }
 }
 
 PrefetchWrapper.propTypes = {
-  activeIcon: PropTypes.string.isRequired,
-  stickerMode: PropTypes.bool.isRequired,
-  needsPrefetch: PropTypes.bool.isRequired,
-  load: PropTypes.func.isRequired//,
-  //FIXME query: PropTypes.oneOfType([PropTypes.string, null])
+  load: PropTypes.func.isRequired
 }
 
 // TODO: we are receiving activeIcon from props and context.store, can we

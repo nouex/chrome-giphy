@@ -10,10 +10,7 @@ describe('withPrefetch()', function () {
   let dummyProps
   beforeAll(function () {
     dummyProps = {
-      activeIcon: "search",
-      stickerMode: false,
       load: () => {},
-      query: null
     }
   })
 
@@ -74,7 +71,6 @@ describe('withPrefetch()', function () {
     expect(load).toHaveBeenCalledWith(
       jasmine.any(Boolean), // should replace
       dummyProps.activeIcon,
-      dummyProps.stickerMode,
       dummyProps.query)
   })
 });

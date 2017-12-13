@@ -9,6 +9,7 @@ import withQuery from "../../decorators/withQuery"
 import withSpinner from "../../decorators/withSpinner"
 import withQueries from "../../decorators/withQueries"
 import withLoad from "../../decorators/withLoad"
+import withStickerMode from "../../decorators/withStickerMode"
 import PropTypes from "prop-types"
 import {compose} from "underscore"
 
@@ -20,8 +21,8 @@ class Search extends React.Component {
   }
 
   handleSubmit(query) {
-    const { activeIcon, stickerMode, load, onQueryChange } = this.props
-    load(true, "search", stickerMode, {q: query})
+    const { activeIcon, load, onQueryChange } = this.props
+    load(true, "search", {q: query})
     onQueryChange(query)
   }
 
@@ -44,10 +45,9 @@ class Search extends React.Component {
 
 Search.propTypes = {
   activeIcon: PropTypes.string.isRequired,
-  stickerMode: PropTypes.bool.isRequired,
   load: PropTypes.func.isRequired,
   onQueryChange: PropTypes.func.isRequired,
   query: PropTypes.object.isRequired
 }
 
-export default compose(withLoad, withQueries, withSpinner, withQuery, withScrollBottomLoad)(Search)
+export default compose(withLoad, withQueries, withSpinner, withStickerMode, withQuery, withScrollBottomLoad)(Search)
