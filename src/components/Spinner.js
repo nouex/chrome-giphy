@@ -3,6 +3,7 @@
 import React from 'react';
 import SpinnerIcon from 'react-icons/lib/fa/spinner';
 
+// TODO: center align
 class Spinner extends React.Component {
   constructor() {
     super()
@@ -34,8 +35,7 @@ class Spinner extends React.Component {
   render() {
     return (
       <SpinnerIcon style={{
-        transform: `rotate(${this.state.deg}deg)`,
-        backgroundColor: "red"
+        transform: `rotate(${this.state.deg}deg)`
       }}/>
     )
   }

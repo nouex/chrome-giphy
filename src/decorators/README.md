@@ -11,7 +11,7 @@ action.load
   @param activeIcon
   @param stickerMode
   @param queries
-  @param cb
+  @param cb (optional)
 
 withLoad()
   props.load
@@ -25,7 +25,7 @@ withRequestParams()
     * YES required
     * YES consume
     * NO digest
-    * YES modifies: merges queries param with defaults
+    * YES modifies: merges queries @param with defaults and also makes it optional
 
 withSpinner()
   props.load

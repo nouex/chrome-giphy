@@ -44,6 +44,12 @@ function withRequestParams(Wrapped) {
     }
 
     load(shouldReplace, activeIcon, stickerMode, queries, cb) {
+      if (typeof queries === "function" || queries === undefined) {
+        if (typeof queries === "function") {
+          cb = queries
+        }
+        queries = {}
+      }
       let passedQueries = Object.assign({}, optionalQueries[activeIcon], queries)
       this.props.load(shouldReplace, activeIcon, stickerMode, passedQueries, cb)
       requiredQueries[activeIcon].forEach((q) => {

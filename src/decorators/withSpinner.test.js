@@ -77,6 +77,8 @@ describe('withSpinner()', function () {
     expect(wrapper.find(Spinner).exists()).toBe(false)
   });
 
+  // NOTE: this relies on setState(), remember it's not always sync so could
+  // be flaky test
   it('load(true) does not display spinner', function () {
     const hoc = withSpinner(() => null),
           wrapper = shallow(React.createElement(hoc, mockProps)),
@@ -85,9 +87,7 @@ describe('withSpinner()', function () {
 
     expect(wrapper.state("isLoadingMore")).toBe(false)
     load(true)
-    // QUESTION: does enzyme make sure setState() is sync ?? Otherwise
-    //  this could be a flaky test
-    expect(wrapper.state("isLoadingMore")).toBe(false)
+    expect(wrapper.state("isLoadingMore")).toBe(true)
   });
 
 

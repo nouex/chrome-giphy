@@ -27,8 +27,8 @@ function withSearchQuery(Wrapped) {
       }, cb)
     }
 
-    load(shouldReplace, activeIcon, cb) {
-      this.props.load(shouldReplace, activeIcon, {q: this.state.query}, cb)
+    load(shouldReplace, activeIcon) {
+      this.props.load(shouldReplace, activeIcon, {q: this.state.query})
     }
 
     render() {

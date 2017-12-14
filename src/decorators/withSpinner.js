@@ -33,11 +33,9 @@ function withSpinner(Wrapped) {
 
       const origLoad = this.props.load
       // FIXME: what if it's already loading what then ???
-      if (!shouldReplace) {
         this.setState({
           isLoadingMore: true
         })
-      }
 
       // FIXME: last arg cb may be presetn check for it and if present
       //  wrap ours around it
@@ -53,7 +51,7 @@ function withSpinner(Wrapped) {
       return (
         <div>
           <Wrapped {...passedProps}/>
-          { isLoadingMore ? <Spinner /> : null }
+          { isLoadingMore ? <div className="mx-auto"><Spinner /></div> : null }
         </div>
       )
     }
