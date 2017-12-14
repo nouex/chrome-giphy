@@ -12,7 +12,7 @@ do we do that?~~
 
 * use something other than jquery for such a small task, really we're only using it cause of browser compat and abstraction, also underscore
 
-* shoun'd withqeury() only be called int the module that needs it??
+* ~~shoun'd withqeury() only be called int the module that needs it??~~
 
 * rm residue pkgs from chrome-giphy-2
 
@@ -42,11 +42,7 @@ Grid.js and use it declaratively
 
 * ~~pass "title " to Icon and have icon pass down any props it don' recognize~~
 
-* reset icon in search bar
-
 * on select() when it copies to clipboard, make the giphy go bigger and back small likea click
-
-* tag option in random only
 -------------
 ``
 next
