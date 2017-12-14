@@ -8,8 +8,8 @@ import c from "../constants"
  */
 
 const initState = {
-  // all the defaults
-  rating: "G"
+  rating: "G",
+  limit: 25
 }
 
 let settingsAlreadyLoaded = false

@@ -31,7 +31,8 @@ const optionalQueries = {
 }
 
 const settingsTransformers = [
-  function ratingTransformer(s, o) {o.rating = s.rating}
+  function ratingTransformer(s, o) {o.rating = s.rating},
+  function limitTransformer(s, o) {o.limit = s.limit}
 ]
 
 const requiredQueries = {

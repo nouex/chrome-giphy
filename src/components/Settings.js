@@ -29,7 +29,7 @@ class Settings extends React.Component {
     return (
       <form>
         <label htmlFor="rating-input">Rating
-          <select onChange={createModifier("rating", optionValueSelector)}
+          <select onChange={createModifier("rating", targetValueSelector)}
                   id="rating-input"
                   value={settings.rating}>
             <option value="Y">Y</option>
@@ -39,10 +39,14 @@ class Settings extends React.Component {
             <option value="R">R</option>
           </select>
         </label>
+        <label htmlFor="limit-input">Request Limit
+          <input id="limit-input" type="number" value={settings.value}
+                 onChange={createModifier("limit", targetValueSelector)} />
+        </label>
       </form>
     )
 
-    function optionValueSelector({target: {value}}) {
+    function targetValueSelector({target: {value}}) {
       return value
     }
 
