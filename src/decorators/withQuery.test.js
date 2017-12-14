@@ -6,7 +6,8 @@ import { render, mount } from "enzyme"
 
 describe('withQuery()', function () {
   const mockProps = {
-    foo: "bar"
+    foo: "bar",
+    load: () => {}
   }
 
   it("renders passed component", function () {
@@ -17,18 +18,29 @@ describe('withQuery()', function () {
     expect(wrapper.find("h1").length).toEqual(1)
   })
 
-  it("passes props through", function () {
+  it("passes unkown props through", function () {
     const comp = (props) => {
-            expect(props).toEqual(jasmine.objectContaining(mockProps))
+            expect(props).toEqual(jasmine.objectContaining({foo: "bar"}))
+            return null
+          },
+          hoc = withQuery(comp),
+          wrapper = render(React.createElement(
+            hoc, Object.assign({}, mockProps, {foo: "bar"}))
+          )
+  })
+
+  it("passes load() as prop", function () {
+    const comp = (props) => {
+            expect(props.load).not.toBe(jasmine.any(Function))
             return null
           },
           hoc = withQuery(comp),
           wrapper = render(React.createElement(hoc, mockProps))
   })
 
-  it("passes query as prop", function () {
+  it("passes searchQuery as prop", function () {
     const comp = (props) => {
-            expect(props.query).not.toBe(undefined)
+            expect(props.searchQuery).not.toBe(undefined)
             return null
           },
           hoc = withQuery(comp),

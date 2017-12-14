@@ -22,8 +22,7 @@ class Search extends React.Component {
 
   handleSubmit(query) {
     const { activeIcon, load, onQueryChange } = this.props
-    load(true, "search", {q: query})
-    onQueryChange(query)
+    onQueryChange(query, () => load(true, "search"))
   }
 
   setQuery(query) {
@@ -32,12 +31,12 @@ class Search extends React.Component {
   }
 
   render() {
-    const {query} = this.props
+    const {searchQuery} = this.props
     return (
       <div>
         <SearchBar onSubmit={this.onSubmit} setQuery={this.onSetQuery}/>
         <Recents />
-        <Currents activeIcon="search" qName={query.q}/>
+        <Currents activeIcon="search" searchQuery={searchQuery}/>
       </div>
     )
   }
@@ -47,7 +46,7 @@ Search.propTypes = {
   activeIcon: PropTypes.string.isRequired,
   load: PropTypes.func.isRequired,
   onQueryChange: PropTypes.func.isRequired,
-  query: PropTypes.object.isRequired
+  searchQuery: PropTypes.string.isRequired
 }
 
 export default compose(withLoad, withQueries, withSpinner, withStickerMode, withQuery, withScrollBottomLoad)(Search)

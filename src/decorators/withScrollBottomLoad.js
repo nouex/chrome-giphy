@@ -34,11 +34,9 @@ function withScrollBottomLoad(Wrapped) {
     }
 
     load() {
-      let { activeIcon, query, load, pagination } = this.props
-      // query = query.q
+      let { activeIcon, load, pagination } = this.props
 
-      load( false, activeIcon, query,
-            this.onLoadReqComplete.bind(this))
+      load( false, activeIcon, this.onLoadReqComplete.bind(this))
     }
 
     // 4.
@@ -71,8 +69,7 @@ function withScrollBottomLoad(Wrapped) {
 
   ScrollBottomLoadWrapper.propTypes = {
     activeIcon: PropTypes.string.isRequired,
-    load: PropTypes.func.isRequired,
-    query: PropTypes.object//,
+    load: PropTypes.func.isRequired
     // pagination: PropTypes.number
   }
 

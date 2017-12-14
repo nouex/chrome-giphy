@@ -62,6 +62,7 @@ describe('withPrefetch()', function () {
           }
         })
     dummyProps.store = dummyStore
+    dummyProps.activeIcon = "search"
 
     const hoc = withPrefetch(() => null),
           load = jasmine.createSpy("load"),
@@ -70,7 +71,6 @@ describe('withPrefetch()', function () {
 
     expect(load).toHaveBeenCalledWith(
       jasmine.any(Boolean), // should replace
-      dummyProps.activeIcon,
-      dummyProps.query)
+      dummyProps.activeIcon)
   })
 });

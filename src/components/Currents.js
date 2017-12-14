@@ -6,8 +6,8 @@ import PropTypes from "prop-types"
 import Icon from "./Icon"
 import GridIcon from 'react-icons/lib/fa/th';
 
-const Currents = ({currents, qName, activeIcon}) => {
-  let resultsFor = qName ? (<q>{qName}</q>) : null;
+const Currents = ({currents, searchQuery, activeIcon}) => {
+  let resultsFor = searchQuery ? (<q>{searchQuery}</q>) : null;
   let resultsTitle
   switch (activeIcon) {
     case "search":

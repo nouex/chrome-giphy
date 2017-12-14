@@ -12,25 +12,30 @@ import React from "react"
 import PropTypes from "prop-types"
 
 function withQuery(Wrapped) {
-  return class SearchWrapper extends React.Component {
+  class SearchWrapper extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        query: null
+        query: ""
       }
       this.onQueryChange = this.handleQueryChange.bind(this)
     }
 
-    handleQueryChange(val) {
+    handleQueryChange(val, cb) {
       this.setState({
         query: val
-      })
+      }, cb)
+    }
+
+    load(shouldReplace, activeIcon, cb) {
+      this.props.load(shouldReplace, activeIcon, {q: this.state.query}, cb)
     }
 
     render() {
       const passedProps = Object.assign({}, this.props, {
         onQueryChange: this.onQueryChange,
-        query: {q: this.state.query}
+        searchQuery: this.state.query,
+        load: this.load.bind(this)
       })
 
       return (
@@ -40,6 +45,12 @@ function withQuery(Wrapped) {
       )
     }
   }
+
+  SearchWrapper.propTypes = {
+    load: PropTypes.func.isRequired
+  }
+
+  return SearchWrapper
 }
 
 export default withQuery

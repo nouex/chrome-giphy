@@ -12,14 +12,13 @@ class PrefetchWrapper extends React.Component {
   }
 
   componentWillMount() {
-    const  { activeIcon, load, query, needsPrefetch } = this.props
-    if (needsPrefetch) load(false, activeIcon, query)
+    const  { activeIcon, load, needsPrefetch } = this.props
+    if (needsPrefetch) load(false, activeIcon)
   }
 
   render() {
     const Wrapped = this.props.children
-    const {
-    activeIcon, load, query} = this.props
+    const {activeIcon, load} = this.props
     const passedProps = { load }
     return <Wrapped {...passedProps}/>
   }
