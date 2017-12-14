@@ -2,6 +2,7 @@
 
 import React from "react"
 import PropTypes from "prop-types"
+import {connect} from "react-redux"
 
 // NOTE: put them in the store if we need to, should def when we implement
 //  the settings page
@@ -29,6 +30,10 @@ const optionalQueries = {
   }
 }
 
+const settingsTransformers = [
+  function ratingTransformer(s, o) {o.rating = s.rating}
+]
+
 const requiredQueries = {
   search: ["q"],
   translate: ["s"],
@@ -50,24 +55,37 @@ function withRequestParams(Wrapped) {
         }
         queries = {}
       }
-      let passedQueries = Object.assign({}, optionalQueries[activeIcon], queries)
-      this.props.load(shouldReplace, activeIcon, stickerMode, passedQueries, cb)
-      requiredQueries[activeIcon].forEach((q) => {
-        if (!(q in queries)) throw new Error(`query '${q}' is required`)
+
+      // merg default (optional) queries with component-specific queries
+      let q = Object.assign({}, optionalQueries[activeIcon], queries)
+
+      // apply settings transformers
+      for (let t of settingsTransformers) {
+        t(this.props.settings, q)
+      }
+
+      // check for required component-specific queries
+      requiredQueries[activeIcon].forEach((_q) => {
+        if (!(_q in q)) throw new Error(`query '${_q}' is required`)
       }, null)
+
+      this.props.load(shouldReplace, activeIcon, stickerMode, q, cb)
     }
 
     render() {
-      const passedQueries = Object.assign({}, this.props, {load: this.proxyLoad})
-      return <Wrapped {...this.props} {...passedQueries} />
+      const passedProps = Object.assign({}, this.props, {load: this.proxyLoad})
+      return <Wrapped {...this.props} {...passedProps} />
     }
   }
 
   QueriesWrapper.propTypes = {
-    load: PropTypes.func.isRequired
+    load: PropTypes.func.isRequired,
+    settings: PropTypes.object.isRequired
   }
 
-  return QueriesWrapper
+  return connect(
+    (s) => ({settings: s.settings})
+  )(QueriesWrapper)
 }
 
 export default withRequestParams
