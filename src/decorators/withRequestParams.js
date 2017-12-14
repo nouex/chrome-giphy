@@ -4,6 +4,8 @@ import React from "react"
 import PropTypes from "prop-types"
 import {connect} from "react-redux"
 
+// FIXME: check that settings apply only to the correct endpts, giphy will
+// most likely ignore unknown params but...
 // NOTE: put them in the store if we need to, should def when we implement
 //  the settings page
 // NOTE: defaults are giphy api's defaults
