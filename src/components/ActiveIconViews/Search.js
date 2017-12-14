@@ -5,7 +5,7 @@ import Recents from "../../containers/Recents"
 import Currents from "../../containers/Currents"
 import SearchBar from "../SearchBar"
 import withScrollBottomLoad from "../../decorators/withScrollBottomLoad"
-import withQuery from "../../decorators/withQuery"
+import withSearchQuery from "../../decorators/withSearchQuery"
 import withSpinner from "../../decorators/withSpinner"
 import withQueries from "../../decorators/withQueries"
 import withLoad from "../../decorators/withLoad"
@@ -49,4 +49,4 @@ Search.propTypes = {
   searchQuery: PropTypes.string.isRequired
 }
 
-export default compose(withLoad, withQueries, withSpinner, withStickerMode, withQuery, withScrollBottomLoad)(Search)
+export default compose(withLoad, withQueries, withSpinner, withStickerMode, withSearchQuery, withScrollBottomLoad)(Search)

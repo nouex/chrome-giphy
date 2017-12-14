@@ -11,7 +11,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-function withQuery(Wrapped) {
+function withSearchQuery(Wrapped) {
   class SearchWrapper extends React.Component {
     constructor(props) {
       super(props);
@@ -53,4 +53,4 @@ function withQuery(Wrapped) {
   return SearchWrapper
 }
 
-export default withQuery
+export default withSearchQuery

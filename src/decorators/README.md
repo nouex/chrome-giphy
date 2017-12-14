@@ -43,7 +43,7 @@ withStickerMode()
     * YES modifies: masks @param shouldReplace in occasions
       and makes removes @param stickerMode
 
-withQuery()
+withSearchQuery()
   props.load
     * YES required
     * YES consume

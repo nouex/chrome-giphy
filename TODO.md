@@ -20,11 +20,11 @@ do we do that?~~
 
 * ~~mk a constant.js for action types~~
 
-* get rid of withQuery() and go with the alternative (update:) also what would have been withHasPrefetched() solving the same issue as withQuery() but wasn't implemented b/c we decided to pass it through <Home />. Yeah, the cleaner approach for that should be similar to that of withQuery() and the solutions are:
+* get rid of withSearchQuery() and go with the alternative (update:) also what would have been withHasPrefetched() solving the same issue as withSearchQuery() but wasn't implemented b/c we decided to pass it through <Home />. Yeah, the cleaner approach for that should be similar to that of withSearchQuery() and the solutions are:
   problem: hoc wraps a target comp. and the hoc needs state that belongs to that comp
-  1. do as we have done withQuery() i.e. bring state up to an hoc
+  1. do as we have done withSearchQuery() i.e. bring state up to an hoc
   2. instead of having the component be the deepest (nested) component, nest the hoc's **inside** of the componnet so that it's now the shallowest (if it's possible and makes sense)
-  3. keep state in redux store and now we don't need to pass down any props at all. the tradeoff is that you now have to bind (connect in redux terms) two components: withQuery() (the one it returs that is) and the target componet.  I like this approach more b/c we don't depend on any component providing the necessary props, they are isolated and no need to worry about order of compose(with*(), with*())
+  3. keep state in redux store and now we don't need to pass down any props at all. the tradeoff is that you now have to bind (connect in redux terms) two components: withSearchQuery() (the one it returs that is) and the target componet.  I like this approach more b/c we don't depend on any component providing the necessary props, they are isolated and no need to worry about order of compose(with*(), with*())
 
 * perhaps rename withSpinner() cuase now it passes pagination
 
@@ -63,7 +63,7 @@ settings
 1. package extension with a default config
 2. on startup load config
 3. settings page is simply the user-facing form of config, modifying settings should modify config file so next time we load it changes persist
-4. the queries section of the config should modify queries.  Either a read-from-queryes-portion-of-config in withQuery.js or mk another decorator withSettingsQueries.js. I like the latter. so withSettingsQueries() will read from config and apply those.
+4. the queries section of the config should modify queries.  Either a read-from-queryes-portion-of-config in withSearchQuery.js or mk another decorator withSettingsQueries.js. I like the latter. so withSettingsQueries() will read from config and apply those.
 
 structure of settings will look like:
 

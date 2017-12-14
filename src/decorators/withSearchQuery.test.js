@@ -1,10 +1,10 @@
 'use strict';
 
 import React from "react"
-import withQuery from "./withQuery"
+import withSearchQuery from "./withSearchQuery"
 import { render, mount } from "enzyme"
 
-describe('withQuery()', function () {
+describe('withSearchQuery()', function () {
   const mockProps = {
     foo: "bar",
     load: () => {}
@@ -12,7 +12,7 @@ describe('withQuery()', function () {
 
   it("renders passed component", function () {
     const comp = () => (<h1>123</h1>),
-          hoc = withQuery(comp),
+          hoc = withSearchQuery(comp),
           wrapper = render(React.createElement(hoc, mockProps))
 
     expect(wrapper.find("h1").length).toEqual(1)
@@ -23,7 +23,7 @@ describe('withQuery()', function () {
             expect(props).toEqual(jasmine.objectContaining({foo: "bar"}))
             return null
           },
-          hoc = withQuery(comp),
+          hoc = withSearchQuery(comp),
           wrapper = render(React.createElement(
             hoc, Object.assign({}, mockProps, {foo: "bar"}))
           )
@@ -34,7 +34,7 @@ describe('withQuery()', function () {
             expect(props.load).not.toBe(jasmine.any(Function))
             return null
           },
-          hoc = withQuery(comp),
+          hoc = withSearchQuery(comp),
           wrapper = render(React.createElement(hoc, mockProps))
   })
 
@@ -43,7 +43,7 @@ describe('withQuery()', function () {
             expect(props.searchQuery).not.toBe(undefined)
             return null
           },
-          hoc = withQuery(comp),
+          hoc = withSearchQuery(comp),
           wrapper = render(React.createElement(hoc, mockProps))
   })
 
@@ -52,14 +52,14 @@ describe('withQuery()', function () {
             expect(props.onQueryChange).toEqual(jasmine.any(Function))
             return null
           },
-          hoc = withQuery(comp),
+          hoc = withSearchQuery(comp),
           wrapper = render(React.createElement(hoc, mockProps))
   })
 
   xit("onQueryChange() updates query", function (done) {
     // IDEA: to fix this use wrapper.prop("onQueryChange")
     const newQueryVal = Symbol(),
-          hoc = withQuery(({onQueryChange, query}) => {
+          hoc = withSearchQuery(({onQueryChange, query}) => {
             expect(query).toBe(null)
             onQueryChange(newQueryVal)
           })
