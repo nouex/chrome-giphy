@@ -9,7 +9,7 @@ import withRequestParams from "../../decorators/withRequestParams"
 import withLoad from "../../decorators/withLoad"
 import withStickerMode from "../../decorators/withStickerMode"
 import PropTypes from "prop-types"
-import { compose } from "underscore"
+import { compose } from "redux"
 
 let Random = ({ load }) => {
   const handleRefresh = () => {

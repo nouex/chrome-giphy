@@ -9,7 +9,7 @@ import withSpinner from "../../decorators/withSpinner"
 import withRequestParams from "../../decorators/withRequestParams"
 import withLoad from "../../decorators/withLoad"
 import withStickerMode from "../../decorators/withStickerMode"
-import { compose } from "underscore"
+import { compose } from "redux"
 import PropTypes from "prop-types"
 
 let Trending = () => {
