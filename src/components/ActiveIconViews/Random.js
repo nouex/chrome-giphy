@@ -5,7 +5,7 @@ import Refresh from "../Refresh"
 import Recents from "../../containers/Recents"
 import Currents from "../../containers/Currents"
 import withPrefetch from "../../decorators/withPrefetch.js"
-import withQueries from "../../decorators/withQueries"
+import withRequestParams from "../../decorators/withRequestParams"
 import withLoad from "../../decorators/withLoad"
 import withStickerMode from "../../decorators/withStickerMode"
 import PropTypes from "prop-types"
@@ -29,6 +29,6 @@ Random.propTypes = {
   load: PropTypes.func.isRequired
 }
 
-Random = compose(withLoad, withQueries, withStickerMode, withPrefetch)(Random)
+Random = compose(withLoad, withRequestParams, withStickerMode, withPrefetch)(Random)
 
 export default Random

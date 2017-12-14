@@ -36,7 +36,7 @@ const requiredQueries = {
   random: []
 }
 
-function withQueries(Wrapped) {
+function withRequestParams(Wrapped) {
   class QueriesWrapper extends React.Component {
     constructor(props) {
       super(props);
@@ -64,4 +64,4 @@ function withQueries(Wrapped) {
   return QueriesWrapper
 }
 
-export default withQueries
+export default withRequestParams

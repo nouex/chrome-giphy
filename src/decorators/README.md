@@ -20,7 +20,7 @@ withLoad()
     * NO digest
     * NO modify
 
-withQueries()
+withRequestParams()
   props.load
     * YES required
     * YES consume

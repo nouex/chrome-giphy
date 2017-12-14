@@ -86,5 +86,5 @@ actions:
   * SETTINGS_LOAD
   * SETTINGS_UPDATE
 
-* withSettingsQueries() should be common to all request types (activeIconViews) so there is no need to declare it repeatedly do it once but make sure it is below withQueries() so it gets the wrapped load()
-* withSettingsQueries() should connect() to the store to get store.settings and then apply the appropriate queries.  It could filter out the queries that don't belong but then it would have to know the activeIcon.  Or you could just pass them up and let withQueries() filter out the ones that don't belong.
+* withSettingsQueries() should be common to all request types (activeIconViews) so there is no need to declare it repeatedly do it once but make sure it is below withRequestParams() so it gets the wrapped load()
+* withSettingsQueries() should connect() to the store to get store.settings and then apply the appropriate queries.  It could filter out the queries that don't belong but then it would have to know the activeIcon.  Or you could just pass them up and let withRequestParams() filter out the ones that don't belong.

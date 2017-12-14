@@ -6,7 +6,7 @@ import Currents from "../../containers/Currents"
 import withScrollBottomLoad from "../../decorators/withScrollBottomLoad"
 import withPrefetch from "../../decorators/withPrefetch"
 import withSpinner from "../../decorators/withSpinner"
-import withQueries from "../../decorators/withQueries"
+import withRequestParams from "../../decorators/withRequestParams"
 import withLoad from "../../decorators/withLoad"
 import withStickerMode from "../../decorators/withStickerMode"
 import { compose } from "underscore"
@@ -21,6 +21,6 @@ let Trending = () => {
   )
 }
 
-Trending = compose(withLoad, withQueries, withSpinner, withStickerMode, withScrollBottomLoad, withPrefetch)(Trending)
+Trending = compose(withLoad, withRequestParams, withSpinner, withStickerMode, withScrollBottomLoad, withPrefetch)(Trending)
 
 export default Trending
