@@ -9,7 +9,8 @@ import c from "../constants"
 
 const initState = {
   rating: "G",
-  limit: 25
+  limit: 25,
+  lang: "en"
 }
 
 let settingsAlreadyLoaded = false
