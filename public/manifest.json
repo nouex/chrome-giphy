@@ -6,5 +6,8 @@
     "default_popup": "index.html",
     "default_title": "giphy thing"
   },
-  "version": "1.0"
+  "version": "1.0",
+  "permissions": [
+   "storage"
+ ]
 }

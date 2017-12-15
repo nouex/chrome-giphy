@@ -23,9 +23,10 @@ import { Form, FormGroup, FormControl, ControlLabel, Col } from "react-bootstrap
 class Settings extends React.Component {
   constructor(p) {
     super(p)
-    this.loadSettings = () => this.props.dispatch(actions.loadSettings())
+    this.loadSettings =
+      () => this.props.dispatch(actions.loadSettings(this.props.dispatch))
     this.modifySettings =
-      (n, v) => this.props.dispatch(actions.modifySettings(n , v))
+      (n, v) => this.props.dispatch(actions.modifySettings(n , v, this.props.dispatch))
   }
 
   // QUESTION: changing views in <App /> does not cause Settings to

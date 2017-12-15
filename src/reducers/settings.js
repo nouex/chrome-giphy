@@ -21,34 +21,29 @@ const initState = {
 
 let settingsAlreadyLoaded = false
 
-
 function loadFromDisk(dispatch) {
-  // 'chrome' is not defined
-  let chrome = window.chrome || {}
   if (!hasChromeStorage) return false
-  chrome.storage.sync.get("settings", (s) => {
-    // if not runtime.lastError is related
+  window.chrome.storage.sync.get("settings", (o) => {
+    let { settings } = o,
+        isNoOp = false
+    if (settings === undefined) isNoOp = true
     dispatch({
       type: c.LOAD_SETTINGS_DISK_CB,
-      er: null, // TODO: check runtime.lastError
-      settings: deserialize(s)
+      settings: isNoOp ? void(0) : deserialize(settings),
+      isNoOp,
+      er: window.chrome.runtime.lastError
     })
-    // else: at least console.eror(e)
   })
   return true
 }
 
 function saveToDisk(o, dispatch) {
-  // 'chrome' is not defined
-  let chrome = window.chrome || {}
   if (!hasChromeStorage) return false
-  chrome.storage.sync.set("settings", serialize(o), () => {
-    // if no error
+  window.chrome.storage.sync.set({"settings": serialize(o)}, () => {
     dispatch({
       type: c.MODIFY_SETTINGS_DISK_CB,
-      er: null // FIXME
+      er: window.chrome.runtime.lastError
     })
-    // else: console.error()
   })
   return true
 }
@@ -58,7 +53,7 @@ function deserialize(s) {
 }
 
 function serialize(o) {
-  return JSON.serialize(o)
+  return JSON.stringify(o)
 }
 
 export default function(state = initState, action) {
@@ -67,31 +62,48 @@ export default function(state = initState, action) {
   switch (type) {
     // QUESTION: why not use a thunk instead of dispatchid LOAD_SETTINGS
     case c.LOAD_SETTINGS:
-      if (!settingsAlreadyLoaded) {
-        settingsAlreadyLoaded = true
-        loadFromDisk()
+      {
+        let {dispatch} = action
+        if (!settingsAlreadyLoaded) {
+          settingsAlreadyLoaded = true
+          loadFromDisk(dispatch)
+        }
+        return state
       }
-      return state
       break;
 
     case c.MODIFY_SETTINGS:
-      let {name, value} = action
-      // TODO: validate 1. field in settings exists, 2. value is proper
-      ret = Object.assign({}, state, { [name]: value })
-      saveToDisk(ret)
-      return ret
+      {
+        let {name, value, dispatch} = action
+        // TODO: validate 1. field in settings exists, 2. value is proper
+        ret = Object.assign({}, state, { [name]: value })
+        saveToDisk(ret, dispatch)
+        return ret
+      }
       break;
 
     case c.LOAD_SETTINGS_DISK_CB:
-      if (action.er === null)
-        return Object.assign({}, action.settings)
-       else
-        return state
-       break;
+      {
+        let { isNoOp, settings, er } = action
+        if (er == null && !isNoOp) // NOTE: `==` intentional
+          return Object.assign({}, settings)
+        else {
+          if (er) {
+            console.error("chrome.lastError => ", er)
+          }
+          return state
+        }
+      }
+      break;
 
     case c.MODIFY_SETTINGS_DISK_CB:
-      // do we care if action.er
-      return state
+      {
+        let { er } = action
+        if (er) {
+          console.error("chrome.lastError => ", er)
+        }
+        return state
+      }
       break;
 
     default:
