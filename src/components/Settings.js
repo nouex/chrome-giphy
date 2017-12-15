@@ -2,23 +2,35 @@
 
 import React from "react"
 import PropTypes from 'prop-types';
+import actions from "../actions"
+
+/**
+ * PROBLEM: reducers/settings.js requires dispatch(), how do we access dispatch?
+ * SOLUTION: the component that invokes the action creator that invokes the
+ * settings reducer will pass dispatch(), but for this we need to use
+ * connect()'s param signature that omits the 2nd arg (mapDispatchToProps) so
+ * that we have props.dispatch(), we then bind the actions creators that were
+ * previously bound using connect() right here.
+ *
+ * Obviosly this is ugly and we should think of a different way to structure
+ * it.
+ */
 
 // TODO: wait after there's a change to an input until we save it do
 // disk
 
-({settings, loadSettings, modifySettings}) => {
-  return <h1>settings coming soon</h1>
-}
-
 class Settings extends React.Component {
   constructor(p) {
     super(p)
+    this.loadSettings = () => this.props.dispatch(actions.loadSettings())
+    this.modifySettings =
+      (n, v) => this.props.dispatch(actions.modifySettings(n , v))
   }
 
   // QUESTION: changing views in <App /> does not cause Settings to
   // unmount does it???
   componentWillMount() {
-    this.props.loadSettings()
+    this.loadSettings()
   }
 
   render() {
@@ -90,7 +102,7 @@ class Settings extends React.Component {
 
     function createModifier(name, valueSelector) {
       return (synEv) => {
-        comp.props.modifySettings(name, valueSelector(synEv))
+        comp.modifySettings(name, valueSelector(synEv))
       }
     }
   }
@@ -98,8 +110,7 @@ class Settings extends React.Component {
 
 Settings.propTypes = {
   settings: PropTypes.object.isRequired,
-  loadSettings: PropTypes.func.isRequired,
-  modifySettings: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired
 }
 
 export default Settings
