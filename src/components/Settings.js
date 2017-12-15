@@ -42,13 +42,15 @@ class Settings extends React.Component {
     return (
       <Form horizontal className="px-4 py-2">
         <FormGroup controlId="rating-input">
-          <ControlLabel>Rating</ControlLabel>
+          <ControlLabel className="col-sm-4">Rating:</ControlLabel>
           <FormControl
+            className="col-sm-1"
             componentClass={
               () => (
                 <select onChange={createModifier("rating", targetValueSelector)}
                         id="rating-input"
-                        value={settings.rating}>
+                        value={settings.rating}
+                        className="col-sm-1" >
                   <option value="Y">Y</option>
                   <option value="G">G</option>
                   <option value="PG">PG</option>
@@ -58,19 +60,23 @@ class Settings extends React.Component {
               } />
         </FormGroup>
         <FormGroup controlId="limit-input">
-          <ControlLabel>Size Per Request</ControlLabel>
+          <ControlLabel className="col-sm-4">Size Per Request:</ControlLabel>
           <FormControl type="number" value={settings.value}
                        onChange={createModifier("limit", targetValueSelector)}
-                       onSubmit={() => {/* avoid the default FIXME */}} />
+                       onSubmit={() => {/* avoid the default FIXME */}}
+                       className="d-inline col-sm-2"
+                       max="100"
+                       min="0" />
         </FormGroup>
         <FormGroup controlId="lang-input">
-          <ControlLabel>Language</ControlLabel>
+          <ControlLabel className="col-sm-4">Language:</ControlLabel>
           <FormControl
             componentClass={
               () => (
                 <select onChange={createModifier("lang", targetValueSelector)}
                         id="lang-input"
-                        value={settings.lang} >
+                        value={settings.lang}
+                        className="col-sm-3" >
                  <option value="en">English</option>
                  <option value="es">Spanish</option>
                  <option value="pt">Portuguese</option>
