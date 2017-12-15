@@ -43,6 +43,8 @@ seems viable wrap it in a react component so that we may then import it in
 Grid.js and use it declaratively
 
 * on select() when it copies to clipboard, make the giphy go bigger and back small likea click
+
+* save recents to disk
 -------------
 
 next
