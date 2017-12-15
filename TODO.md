@@ -1,3 +1,5 @@
+## TODOs
+
 * ~~use a Set data struct for recents, it's more natural~~
 
 * ~~when <Home /> passed stickeMOde to an activeIconView we don't wanna reload but
@@ -47,42 +49,8 @@ Grid.js and use it declaratively
 * save recents to disk
 -------------
 
-next
-----
+## next
 1. make it pretty ✅
 2. cleanup ✅
-4. settings loading from disk with and chrome extension
-3. toods
-
-
-
-settings
---------
-1. package extension with a default config
-2. on startup load config
-3. settings page is simply the user-facing form of config, modifying settings should modify config file so next time we load it changes persist
-4. the queries section of the config should modify queries.  Either a read-from-queryes-portion-of-config in withSearchQuery.js or mk another decorator withSettingsQueries.js. I like the latter. so withSettingsQueries() will read from config and apply those.
-
-structure of settings will look like:
-
-giphs per load: 25
-rating:         G
-lang:           en
-
-UI of settings will look like:
-
-Gips per load:          <NumberInput>
-Rating:                 <DropdownSelec>
-Lang:                   <Dropdown>
-
-toggles will use a <ToggleIcon ?>
-
-Implementation of settings storage:
-
-* in redux store:
-actions:
-  * SETTINGS_LOAD
-  * SETTINGS_UPDATE
-
-* withSettingsQueries() should be common to all request types (activeIconViews) so there is no need to declare it repeatedly do it once but make sure it is below withRequestParams() so it gets the wrapped load()
-* withSettingsQueries() should connect() to the store to get store.settings and then apply the appropriate queries.  It could filter out the queries that don't belong but then it would have to know the activeIcon.  Or you could just pass them up and let withRequestParams() filter out the ones that don't belong.
+4. settings loading from disk with and chrome extension ✅
+3. todos
