@@ -33,7 +33,7 @@ server.use("/v1", function (req, _, next) {
 );
 
 server.get('*', (req, res) => {
-  re.end("???")
+  res.end("???") // TODO: respond with a file not found or sum
 })
 
 server.listen(port, (err) => {
