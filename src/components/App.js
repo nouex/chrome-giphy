@@ -3,7 +3,7 @@
 import React from 'react';
 import NavBar from "./NavBar"
 import Home from "../containers/Home"
-import Settings from "./Settings"
+import Settings from "../containers/Settings"
 
 const views = { home: Home, settings: Settings }
 
