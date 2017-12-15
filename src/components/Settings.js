@@ -17,6 +17,8 @@ import { Form, FormGroup, FormControl, ControlLabel, Col } from "react-bootstrap
  * it.
  */
 
+// FIXME: TIL media queries don't work in popup pages, bootstrap classes such as
+// col-sm-* won't work
 // TODO: wait after there's a change to an input until we save it do
 // disk
 
