@@ -5,12 +5,15 @@ const proxy = require('http-proxy-middleware');
 const morgan = require('morgan');
 const url = require('url')
 const querystring = require('querystring');
+const serveStatic = require('serve-static')
 
 const API_KEY = process.env.API_KEY
 require("assert").ok(API_KEY)
-const port = parseInt(process.env.PORT, 10) || 8080
+const PORT = parseInt(process.env.PORT, 10) || 8080
+require("assert").ok(PORT)
 
 server.use(morgan("tiny"))
+server.use(serveStatic('build', {'index': ['index.html', 'index.htm']}))
 server.use("/v1", function (req, _, next) {
     /**
      * NOTE: node-http-proxy used by http-proxy-middleware does not look at
@@ -20,7 +23,7 @@ server.use("/v1", function (req, _, next) {
      */
     const parsedOrigUrl = url.parse(req.originalUrl, false)
     const parsedOrigQuery = querystring.parse(parsedOrigUrl.query)
-    parsedOrigQuery.api_key = API_KEY
+    parsedOrigQuery.api_key = API_KEY.trim()
     parsedOrigUrl.search = querystring.stringify(parsedOrigQuery)
     req.originalUrl = url.format(parsedOrigUrl)
     next()
@@ -36,7 +39,7 @@ server.get('*', (req, res) => {
   res.end("???") // TODO: respond with a file not found or sum
 })
 
-server.listen(port, (err) => {
+server.listen(PORT, (err) => {
   if (err) throw err
-  console.log(`> Ready on http://localhost:${port}`)
+  console.log(`> Ready on http://localhost:${PORT}`)
 })
