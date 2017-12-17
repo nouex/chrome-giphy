@@ -47,6 +47,8 @@ Grid.js and use it declaratively
 * on select() when it copies to clipboard, make the giphy go bigger and back small likea click
 
 * save recents to disk
+
+* After the most recent commit (add popup/) the extension will no longer have access to `chrome.storage` b/c it is an iframe
 -------------
 
 ## next
