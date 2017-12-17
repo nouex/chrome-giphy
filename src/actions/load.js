@@ -14,7 +14,7 @@ function load(shouldReplace, activeIcon, stickerMode, queries, cb) {
     let search, uri
 
     cb = cb || (() => void(0))
-
+  
     updatePagination(activeIcon, shouldReplace, pagination)
 
     // pagination
@@ -27,27 +27,6 @@ function load(shouldReplace, activeIcon, stickerMode, queries, cb) {
 
     // format relative uri
     uri = formatURI(activeIcon, stickerMode, search)
-
-    // prepend host:port
-    // https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-custom-environment-variables
-    // NOTE: do NOT add a trailing slash
-    let hostPort
-    if (process.env.NODE_ENV === "production") {
-      const productionAddr = process.env.REACT_APP_PRODUCTION_ADDR
-      if (typeof productionAddr !== "string") {
-        // TODO: it'd be nice if we could run a script right before
-        // `npm run build` that checks for this and refuses to build if not
-        // present
-        throw new Error("REACT_APP_PRODUCTION_ADDR was not set during build")
-      } else {
-        hostPort = productionAddr
-      }
-    } else {
-      // NOTE: keep it relative when in development/test mode
-      hostPort = ""
-    }
-
-    uri = hostPort + uri
 
     xhr({
       method: "GET",
