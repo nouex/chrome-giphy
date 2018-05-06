@@ -64,7 +64,7 @@ class Settings extends React.Component {
         </FormGroup>
         <FormGroup controlId="limit-input">
           <ControlLabel className="col-sm-4">Size Per Request:</ControlLabel>
-          <FormControl type="number" value={settings.value}
+          <FormControl type="number" value={settings.limit}
                        onChange={createModifier("limit", targetValueSelector)}
                        onSubmit={() => {/* avoid the default FIXME */}}
                        className="d-inline col-sm-2"
