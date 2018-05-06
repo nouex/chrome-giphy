@@ -44,11 +44,15 @@ this https://stackoverflow.com/a/40547470/3280654 and it might work.  If it
 seems viable wrap it in a react component so that we may then import it in
 Grid.js and use it declaratively
 
+* UPDATE on 👆🏼: https://developers.google.com/web/updates/2018/03/clipboardapi
+
 * on select() when it copies to clipboard, make the giphy go bigger and back small likea click
 
 * save recents to disk
 
 * After the most recent commit (add popup/) the extension will no longer have access to `chrome.storage` b/c it is an iframe
+
+* use es7 decorators for our decorators
 -------------
 
 ## next
