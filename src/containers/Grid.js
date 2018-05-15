@@ -1,6 +1,5 @@
-'use strict';
 
-import React from 'react';
+
 import Grid from "../components/Grid"
 import { connect } from "react-redux"
 import actions from "../actions"

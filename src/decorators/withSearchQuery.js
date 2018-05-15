@@ -1,4 +1,4 @@
-'use strict';
+
 
 /**
  * Problem: withScrollBottomLoad() and withPrefetch() make use of 'query' if the

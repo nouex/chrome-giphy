@@ -1,4 +1,4 @@
-'use strict';
+
 
 /**
  * TODO: copy/paste from SEarch.js

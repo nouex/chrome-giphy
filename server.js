@@ -1,4 +1,4 @@
-'use strict';
+
 
 const server = require('express')()
 const proxy = require('http-proxy-middleware');

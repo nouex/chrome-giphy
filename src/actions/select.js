@@ -1,4 +1,4 @@
-'use strict';
+
 
 import c from "../constants"
 

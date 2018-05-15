@@ -1,4 +1,4 @@
-'use strict';
+
 
 describe('<Home />', function () {
   describe('renders', function () {

@@ -1,4 +1,4 @@
-'use strict';
+
 
 import xhr from "xhr"
 import c from "../constants"
@@ -14,7 +14,7 @@ function load(shouldReplace, activeIcon, stickerMode, queries, cb) {
     let search, uri
 
     cb = cb || (() => void(0))
-  
+
     updatePagination(activeIcon, shouldReplace, pagination)
 
     // pagination
@@ -93,7 +93,6 @@ function load(shouldReplace, activeIcon, stickerMode, queries, cb) {
       case "trending":
       case "translate":
         return body.data
-        break;
 
       case "random":
         // TEMP: ideally use unflatten()
@@ -102,34 +101,33 @@ function load(shouldReplace, activeIcon, stickerMode, queries, cb) {
         img.height = body.data.fixed_width_small_height
         img.url = body.data.fixed_width_small_url
         return [body.data]
-        break;
 
       default:
         throw new Error("unknown activeIcon")
     }
 
-    function unflatten(imgObj) {
-      const sep = "_", tO = {}
-
-      for (const key in imgObj) {
-        if (imgObj.hasOwnProperty(key)) {
-          let val = imgObj[key],
-              o = tO
-          key.split(sep).forEach((key2, ind, arr) => {
-              let final = ind === arr.length -1
-              if (final) {
-                o[key2] = val
-              } else {
-                let oo = o[key2]
-                if (!oo) {
-                  o[key2] = {}
-                  o = o[key2]
-                }
-              }
-          })
-        }
-      }
-    }
+    // function unflatten(imgObj) {
+    //   const sep = "_", tO = {}
+    //
+    //   for (const key in imgObj) {
+    //     if (imgObj.hasOwnProperty(key)) {
+    //       let val = imgObj[key],
+    //           o = tO
+    //       key.split(sep).forEach((key2, ind, arr) => {
+    //           let final = ind === arr.length -1
+    //           if (final) {
+    //             o[key2] = val
+    //           } else {
+    //             let oo = o[key2]
+    //             if (!oo) {
+    //               o[key2] = {}
+    //               o = o[key2]
+    //             }
+    //           }
+    //       })
+    //     }
+    //   }
+    // }
   }
 }
 

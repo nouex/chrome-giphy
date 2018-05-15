@@ -1,9 +1,9 @@
-'use strict';
+
 
 import React from 'react';
 import Icon from "./Icon"
 import Search from 'react-icons/lib/go/search';
-import Translate from 'react-icons/lib/fa/globe';
+// import Translate from 'react-icons/lib/fa/globe';
 import Random from "react-icons/lib/fa/random"
 import Trending from "react-icons/lib/go/flame"
 import PropTypes from "prop-types"

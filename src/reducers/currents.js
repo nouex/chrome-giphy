@@ -1,4 +1,4 @@
-'use strict';
+
 
 import c from "../constants"
 
@@ -14,11 +14,9 @@ export default function(state = initState, action) {
   switch (action.type) {
     case c.CURRENT_APPEND:
       return Object.assign({}, state, { [activeIcon]: state[activeIcon].concat(data) })
-      break;
 
     case c.CURRENT_REPLACE:
       return Object.assign({}, state, { [activeIcon]: data })
-      break;
 
     default:
       return state

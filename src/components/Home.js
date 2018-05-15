@@ -1,4 +1,4 @@
-'use strict';
+
 
 import React from "react"
 import IconSelector from "./IconSelector"
@@ -45,11 +45,6 @@ class Home extends React.Component {
       activeIcon,
       stickerMode
     } = this.state
-
-    const passedProps = {
-      activeIcon,
-      stickerMode
-    }
 
     return (
       <div>

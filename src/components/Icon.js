@@ -1,4 +1,4 @@
-'use strict';
+
 
 import React from 'react';
 
@@ -18,8 +18,6 @@ import React from 'react';
  */
 
 const Icon = (props) => {
-  let {onClick} = props
-
    let o = Object.assign({
      textColor: "text-secondary",
      display: "d-inline",

@@ -1,4 +1,4 @@
-'use strict';
+
 
 describe('<Search />', function () {
   describe('renders', function () {

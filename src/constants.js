@@ -1,4 +1,4 @@
-'use strict';
+
 
 export default {
   CURRENT_APPEND: "CURRENT_APPEND",

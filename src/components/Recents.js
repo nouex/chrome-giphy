@@ -1,10 +1,9 @@
-'use strict';
+
 
 import React from 'react';
 import Clock from 'react-icons/lib/fa/clock-o';
 import Grid from "../containers/Grid"
 import Icon from "./Icon"
-import PropTypes from "prop-types"
 
 const Recents = ({recents}) => (
   <div className="bg-tertiary px-4 py-2">

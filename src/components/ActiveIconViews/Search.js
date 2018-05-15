@@ -1,4 +1,4 @@
-'use strict';
+
 
 import React from "react"
 import Recents from "../../containers/Recents"
@@ -21,7 +21,7 @@ class Search extends React.Component {
   }
 
   handleSubmit(query) {
-    const { activeIcon, load, onQueryChange } = this.props
+    const { load, onQueryChange } = this.props
     onQueryChange(query, () => load(true, "search"))
   }
 

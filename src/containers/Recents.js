@@ -1,6 +1,5 @@
-'use strict';
 
-import React from 'react';
+
 import Recents from "../components/Recents"
 import { connect } from "react-redux"
 

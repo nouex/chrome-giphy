@@ -1,4 +1,4 @@
-'use strict';
+
 
 import React from "react"
 import PropTypes from "prop-types"
@@ -7,10 +7,6 @@ import { connect } from "react-redux"
 let _PrefetchWrapper
 
 class PrefetchWrapper extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentWillMount() {
     const  { activeIcon, load, needsPrefetch } = this.props
     if (needsPrefetch) load(false, activeIcon)
@@ -18,7 +14,7 @@ class PrefetchWrapper extends React.Component {
 
   render() {
     const Wrapped = this.props.children
-    const {activeIcon, load} = this.props
+    const {load} = this.props
     const passedProps = { load }
     return <Wrapped {...passedProps}/>
   }

@@ -1,4 +1,4 @@
-'use strict';
+
 
 import React from "react"
 import Recents from "../../containers/Recents"
@@ -10,7 +10,7 @@ import withRequestParams from "../../decorators/withRequestParams"
 import withLoad from "../../decorators/withLoad"
 import withStickerMode from "../../decorators/withStickerMode"
 import { compose } from "redux"
-import PropTypes from "prop-types"
+// import PropTypes from "prop-types"
 
 let Trending = () => {
   return (

@@ -1,4 +1,4 @@
-'use strict';
+
 
 describe('<Trending />', function () {
   describe('renders', function () {

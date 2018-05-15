@@ -1,4 +1,4 @@
-'use strict';
+
 
 import React from 'react';
 import PropTypes from "prop-types"
@@ -130,15 +130,18 @@ class Grid extends React.Component {
     if (!dataArr) return null
     let maxInd = 0
     const giphs = dataArr.map((imgObj, ind) => {
-      let img, id, ret, onActiveClick
+      let img, id, ret, onActiveClick, title
 
       maxInd = ind
       img = imgObj.images.fixed_width_small// 100px w
       id = imgObj.id
+      title = imgObj.title
+
       ret = (
         <CopyToClipboard key={id} text={img.url} onCopy={(t, res) => {/*...*/}}>
           <img width={img.width} height={img.height} src={img.url}
-               className="giph" />
+               className="giph"
+               alt={title}/>
         </CopyToClipboard>
       )
       onActiveClick = (ev) => {

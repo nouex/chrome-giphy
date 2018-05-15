@@ -1,9 +1,9 @@
-'use strict';
+
 
 import React from "react"
 import PropTypes from 'prop-types';
 import actions from "../actions"
-import { Form, FormGroup, FormControl, ControlLabel, Col } from "react-bootstrap"
+import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap"
 
 /**
  * PROBLEM: reducers/settings.js requires dispatch(), how do we access dispatch?

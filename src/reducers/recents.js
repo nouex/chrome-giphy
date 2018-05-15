@@ -1,4 +1,4 @@
-'use strict';
+
 
 import c from "../constants"
 
@@ -22,7 +22,6 @@ export default function(queue = initState, action) {
         ret = queue
       }
       return ret;
-      break;
 
     default:
       return queue

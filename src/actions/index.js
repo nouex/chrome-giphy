@@ -1,4 +1,4 @@
-'use strict';
+
 
 import load from "./load"
 import select from "./select"

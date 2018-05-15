@@ -1,9 +1,7 @@
-'use strict';
 
-import React from 'react';
+
 import Currents from "../components/Currents"
 import { connect } from "react-redux"
-import actions from "../actions"
 
 const mapStateToProps = (state, ownProps) => ({
   currents: state.currents[ownProps.activeIcon],

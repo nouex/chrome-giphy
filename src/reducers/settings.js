@@ -1,4 +1,4 @@
-'use strict';
+
 
 import c from "../constants"
 import hasChromeStorage from "has-chrome-storage"
@@ -70,7 +70,6 @@ export default function(state = initState, action) {
         }
         return state
       }
-      break;
 
     case c.MODIFY_SETTINGS:
       {
@@ -80,7 +79,6 @@ export default function(state = initState, action) {
         saveToDisk(ret, dispatch)
         return ret
       }
-      break;
 
     case c.LOAD_SETTINGS_DISK_CB:
       {
@@ -94,7 +92,6 @@ export default function(state = initState, action) {
           return state
         }
       }
-      break;
 
     case c.MODIFY_SETTINGS_DISK_CB:
       {
@@ -104,7 +101,6 @@ export default function(state = initState, action) {
         }
         return state
       }
-      break;
 
     default:
       return state
