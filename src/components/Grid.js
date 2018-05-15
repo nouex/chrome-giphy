@@ -130,15 +130,16 @@ class Grid extends React.Component {
     if (!dataArr) return null
     let maxInd = 0
     const giphs = dataArr.map((imgObj, ind) => {
-      let img, id, ret, onActiveClick, title
+      let img, id, ret, onActiveClick, title, origImgUrl
 
       maxInd = ind
       img = imgObj.images.fixed_width_small// 100px w
       id = imgObj.id
       title = imgObj.title
+      origImgUrl = imgObj.images.original.url
 
       ret = (
-        <CopyToClipboard key={id} text={img.url} onCopy={(t, res) => {/*...*/}}>
+        <CopyToClipboard key={id} text={origImgUrl} onCopy={(t, res) => {/*...*/}}>
           <img width={img.width} height={img.height} src={img.url}
                className="giph"
                alt={title}/>
