@@ -3,6 +3,9 @@
 import xhr from "xhr"
 import c from "../constants"
 
+// NOTE: i don't like this being in the global module scope
+// but it also doesn't belong in the redux store b/c it does not reflect UI
+// changes when it is updated
 const pagination = {
   search: 0,
   trending: 0

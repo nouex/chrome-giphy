@@ -6,7 +6,6 @@ import { connect } from "react-redux"
 import actions from "../actions"
 const { load } = actions
 
-let _LoadWrapper
 // FIXME: this.props will pass this.props.children which shoulnd't
 const LoadWrapper =
 function loadWrapper(props) {
@@ -18,16 +17,16 @@ LoadWrapper.propTypes = {
   load: PropTypes.func.isRequired
 }
 
-_LoadWrapper = connect((_, {children}) => ({
+const LoadWrapperConnected = connect((_, {children}) => ({
   Wrapped: children
 }), {load})(LoadWrapper)
 
 function withLoad(Wrapped) {
   return (props) => {
     return (
-      <_LoadWrapper {...props}>
+      <LoadWrapperConnected {...props}>
         { Wrapped }
-      </_LoadWrapper>
+      </LoadWrapperConnected>
     )
   }
 }
