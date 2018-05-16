@@ -103,6 +103,7 @@ function load(shouldReplace, activeIcon, stickerMode, queries, cb) {
         img.width = body.data.fixed_width_small_width
         img.height = body.data.fixed_width_small_height
         img.url = body.data.fixed_width_small_url
+        body.data.images.original = {url: body.data.original_url}
         return [body.data]
 
       default:
