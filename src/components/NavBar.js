@@ -12,7 +12,7 @@ const NavBar = ({active, onChange}) => {
       <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
-            <span>GifPicker</span>
+            <span>Piphy</span>
           </Navbar.Brand>
         </Navbar.Header>
           <Nav>

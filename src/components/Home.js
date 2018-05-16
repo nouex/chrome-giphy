@@ -54,6 +54,10 @@ class Home extends React.Component {
                              onClick={this.onStickerModeToggleClick}/>
         </div>
         { React.createElement(activeIconViews[activeIcon], {stickerMode, activeIcon}) }
+        <div className="text-center">
+          <img src="Poweredby_100px-White_VertText.png"
+               alt="Attribution Logo" className="mt-3"/>
+        </div>
       </div>
     )
   }
